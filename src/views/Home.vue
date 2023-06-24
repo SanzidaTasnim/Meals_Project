@@ -1,6 +1,6 @@
 <template>
    <div class="flex p-8 justify-center">
-      <input type="text" class="rounded border-2 border-grey-200 w-[800px]" placeholder="Search For Meals" >
+      <input type="text" class="rounded border-2 border-gray-200 w-[800px]" placeholder="Search For Meals" >
    </div>
    <div class="flex gap-2 justify-center mt-2 ">
       <router-link :to="{ name: 'byLetter', params: {letter} }" :key="letter" v-for="letter in letters" class="bg-orange-700 py-2 px-3 rounded text-white hover:scale-110 transition-all font-semibold">
