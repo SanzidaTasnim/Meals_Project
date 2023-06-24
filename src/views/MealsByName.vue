@@ -1,5 +1,5 @@
 <template>
-   <div class="flex p-8 justify-center">
+   <div class="flex p-8 pb-0 justify-center">
       <input 
          type="text" 
          class="rounded border-2 border-gray-200 w-[800px]" 
@@ -10,7 +10,7 @@
    </div>
    <div class="grid grid-cols-2 md:grid-cols-3 gap-5 p-8">
       <div v-for="meal of meals" :key="meal.idMeal" class="bg-white shadow rounded-xl">
-         <router-link to="/">
+         <router-link :to="{name: 'mealDetails' , params: {id: meal.idMeal}}">
             <img :src="meal.strMealThumb" :alt="strMeal" class="rounded-t-xl h-48 w-full object-cover" />
          </router-link>
          <div class="p-3">
@@ -19,10 +19,10 @@
                Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga omnis a ipsa, dolor numquam necessitatibus!
             </p>
             <div class="flex items-center justify-between">
-               <a :href="meal.strYoutube" target="_blank" class="px-2 py-1 rounded border-2 border-red-600 bg-red-500 hover:bg-red-600 text-white transition-colors mr-4">
-                  TouTube
-               </a>
-               <router-link to="/" class="px-2 py-1 rounded border-2 border-sky-600 bg-sky-500 hover:bg-sky-600 text-white transition-colors">
+               <YouTubeButton :href="meal.strYoutube">
+                  You Tube
+               </YouTubeButton>
+               <router-link :to="{name: 'mealDetails' , params: {id: meal.idMeal}}" class="px-2 py-1 rounded border-2 border-sky-600 bg-sky-500 hover:bg-sky-600 text-white transition-colors">
                   View
                </router-link>
             </div>
@@ -36,6 +36,7 @@ import { onMounted, ref } from 'vue';
 import { computed } from "@vue/reactivity"
 import store from '../store';
 import { useRoute } from 'vue-router';
+import YouTubeButton from '../components/YouTubeButton.vue';
 
 
    const keyword = ref('');
