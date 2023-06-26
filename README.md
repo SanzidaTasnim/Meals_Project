@@ -20,6 +20,7 @@ This is a Vue.js project with Vuex that allows users to search for food items ba
 * JavaScript
 * Vue JS
 * Vuex
+* TailWind CSS
 
 ## Usage Tools
 * Git
