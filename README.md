@@ -10,7 +10,7 @@ This is a Vue.js project with Vuex that allows users to search for food items ba
 ## 🔗 Links
 [Live Site Link Here ](https://peppy-gumption-885c1f.netlify.app/)
 
-## Best Deals Overview
+## Happy Meal Overview
 
 * Search Food By their Name
 * Search Food By their Letter
