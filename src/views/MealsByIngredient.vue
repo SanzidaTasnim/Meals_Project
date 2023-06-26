@@ -1,11 +1,18 @@
 <template>
-   Meals By Ingredients
+   <Meals :meals="meals"/>
 </template>
 
 <script setup>
+import { computed } from '@vue/reactivity';
+import { onMounted, ref } from 'vue';
+import store from '../store';
+import { useRoute } from 'vue-router';
+import Meals from '../components/Meals.vue';
 
-</script>
+const route = useRoute();
+const meals = computed(() => store.state.mealsByIngredient);
 
-<style>
-
-</style>
+onMounted(() => {
+   store.dispatch('searchMealsByIngredient', route.params.ingredient)
+})
+</script> 
