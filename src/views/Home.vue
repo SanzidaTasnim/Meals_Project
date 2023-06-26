@@ -1,27 +1,23 @@
 <template>
-   <div class="flex p-8 justify-center">
-      <input type="text" class="rounded border-2 border-gray-200 w-[800px]" placeholder="Search For Meals" >
+   <div class="p-8 pb-0 text-red-600">
+     <h1 class="text-4xl font-bold mb-4">Random Meals</h1>
    </div>
-   <div class="flex gap-2 justify-center mt-2 ">
-      <router-link :to="{ name: 'byLetter', params: {letter} }" :key="letter" v-for="letter in letters" class="bg-orange-700 py-2 px-3 rounded text-white hover:scale-110 transition-all font-semibold">
-         {{ letter }}
-      </router-link>
-   </div>
-   <div>
-      <pre>
-         {{ ingredients }}
-      </pre>
-   </div>
-</template>
-
-<script setup>
-   import {onMounted, ref } from 'vue';
-   import axiosClient from '../axiosClient.js';
-   const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split('');
-   const ingredients = ref([]);
-
-   onMounted(async () => {
-      const response = await axiosClient.get('list.php?i=list');
-      ingredients.value = response.data;
-   })
-</script>
+   <Meals :meals="meals" />
+ </template>
+ 
+ <script setup>
+ import { computed, onMounted, ref } from "vue";
+ import store from "../store";
+ import Meals from "../components/Meals.vue";
+ import axiosClient from "../axiosClient.js";
+ 
+ const meals = ref([]);
+ 
+ onMounted(async () => {
+   for (let i = 0; i < 9; i++) {
+     axiosClient
+       .get(`random.php`)
+       .then(({ data }) => meals.value.push(data.meals[0]));
+   }
+ });
+ </script>
